@@ -21,16 +21,18 @@ echo "-----------------------AD BLOCKER---------------------";
 echo "------------------------------------------------------";
 echo
 
-#Get MD5 of each file. Removes file name to just store the MD5 value
-HOST=$(md5sum /etc/hosts | sed -e 's/\ .\/etc\/hosts.*//');
-HOSTU=$(md5sum /etc/hosts.unblock | sed -e 's/\ .\/etc\/hosts.*//');
-HOSTB=$(md5sum /etc/hosts.block | sed -e 's/\ .\/etc\/hosts.*//');
-
 BLOCK="/etc/hosts.block"
 
 if [ -f $BLOCK ]
         then
-                echo $BLOCK found, swapping hosts
+		
+        echo $BLOCK found, swapping hosts
+
+		#Get MD5 of each file. Removes file name to just store the MD5 value
+		HOST=$(md5sum /etc/hosts | sed -e 's/\ .\/etc\/hosts.*//');
+		HOSTU=$(md5sum /etc/hosts.unblock | sed -e 's/\ .\/etc\/hosts.*//');
+		HOSTB=$(md5sum /etc/hosts.block | sed -e 's/\ .\/etc\/hosts.*//');
+
 		echo \"$HOST\" hosts
 		echo \"$HOSTU\" hosts.unblock
 		echo \"$HOSTB\" hosts.block
