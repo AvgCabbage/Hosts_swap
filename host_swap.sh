@@ -79,7 +79,9 @@ if [ -f $BLOCK ]
 			then
 		                cp /etc/hosts /etc/hosts.unblock
 						echo hosts.unblock file created
-                		cp /sdcard/Hosts_swap/hosts.block /etc/hosts.block
+						
+						#Create softlink to the 'block' hosts file on the sdcard
+                		ln -sf /sdcard/Hosts_swap/hosts.block /etc/hosts.block
 						echo hosts.block file has been copied
 		else
 				echo hosts.block file not found...
